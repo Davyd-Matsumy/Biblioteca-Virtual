@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo da Biblioteca" class="logo">
+            <h1>Biblioteca Virtual</h1>
+        </div>
+        <div id="digital-clock"></div>
+    </header>
+
+    <main>
+        <div class="controls-container">
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Pesquisar por título ou autor...">
+            </div>
+            <div id="category-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="romance">Romance</button>
+                <button class="filter-btn" data-filter="realismo">Realismo</button>
+                <button class="filter-btn" data-filter="modernismo">Modernismo</button>
+                <button class="filter-btn" data-filter="aventura">Aventura</button>
+            </div>
+        </div>
+
+        <h2>Livros Disponíveis</h2>
+        <section class="book-list">
+            <!-- Livros adicionados dinamicamente -->
+            <a href="https://ddcus.org/pdf/summer_reading/11th_grade/Dom_Casmurro-Machado_de_Assis.pdf" target="_blank" class="book-item" data-category="realismo">
+                <img src="img/Capa Livro - Dom Casmurro.jpg" alt="Capa do livro Dom Casmurro">
+                <div class="book-info">
+                    <h3>Dom Casmurro</h3>
+                    <p>Machado de Assis (1899)</p>
+                </div>
+            </a>
+            <a href="https://iedamagri.wordpress.com/wp-content/uploads/2020/02/vidas-secas-graciliano-ramos.pdf" target="_blank" class="book-item" data-category="modernismo">
+                <img src="img/RAMOS, Graciliano_ Vidas Secas_.jpg" alt="Capa do livro Vidas Secas">
+                <div class="book-info">
+                    <h3>Vidas Secas</h3>
+                    <p>Graciliano Ramos (1938)</p>
+                </div>
+            </a>
+            <a href="https://objdigital.bn.br/objdigital2/acervo_digital/div_obrasraras/or15820/or15820.pdf" target="_blank" class="book-item" data-category="realismo">
+                <img src="img/O cortiço.jpg" alt="Capa do livro O Cortiço">
+                <div class="book-info">
+                    <h3>O Cortiço</h3>
+                    <p>Aluísio Azevedo (1890)</p>
+                </div>
+            </a>
+            <a href="https://ufpi.br/arquivos_download/arquivos/A_Hora_da_Estrela_-_Clarice_Lispector.pdf" target="_blank" class="book-item" data-category="modernismo">
+                <img src="img/Clarice Lispector_ 5 livros essenciais para conhecer a escritora.jpg" alt="Capa do livro A Hora da Estrela">
+                <div class="book-info">
+                    <h3>A Hora da Estrela</h3>
+                    <p>Clarice Lispector (1977)</p>
+                </div>
+            </a>
+            <a href="https://escoladedebate.cnpc.cultura.gov.br/wp-content/uploads/sites/24/2017/05/capitaes-da-areia.pdf" target="_blank" class="book-item" data-category="modernismo">
+                <img src="img/Capitães de areia.jpg" alt="Capa do livro Capitães da Areia">
+                <div class="book-info">
+                    <h3>Capitães da Areia</h3>
+                    <p>Jorge Amado (1937)</p>
+                </div>
+            </a>
+            <a href="https://www.castroweb.com.br/castrodigital/Arquivos2020/CastroDigital_livro_Macunaima_Mario_de_Andrade.pdf" target="_blank" class="book-item" data-category="modernismo">
+                <img src="img/8 trechos comentados de Macunaíma - o herói sem nenhum caráter.jpg" alt="Capa do livro Macunaíma">
+                <div class="book-info">
+                    <h3>Macunaíma</h3>
+                    <p>Mário de Andrade (1928)</p>
+                </div>
+            </a>
+            <a href="https://www.castroweb.com.br/castrodigital/Arquivos2018/CastroDigital_Auto_da_Compadecida_Ariano_Suassuna.pdf" target="_blank" class="book-item" data-category="modernismo">
+                <img src="img/Alto da compatecida.jpg" alt="Capa do livro O Auto da Compadecida">
+                <div class="book-info">
+                    <h3>O Auto da Compadecida</h3>
+                    <p>Ariano Suassuna (1955)</p>
+                </div>
+            </a>
+            <a href="https://leituramelhorviagem.wordpress.com/wp-content/uploads/2016/11/livro-a-ilha-perdida.pdf" target="_blank" class="book-item" data-category="aventura">
+                <img src="img/Os 10 livros mais vendidos de setembro - Estante Virtual Blog _ Livros, cultura e afins.jpg" alt="Capa do livro O Auto da Compadecida">
+                <div class="book-info">
+                    <h3>A Ilha Perdida</h3>
+                    <p>Livro por Maria José Dupré(1944)</p>
+                </div>
+            </a>
+            <a href="https://www.ceaacolegiobrasil.com.br/Biblioteca_virtual/img/divers%C3%A3o_paradidaticos/7%C2%BA_ano/Iracema.pdf" target="_blank" class="book-item" data-category="romance">
+                <img src="img/Iracema (Clássicos Melhoramentos).jpg" alt="Capa do livro Iracema">
+                <div class="book-info">
+                    <h3>Iracema</h3>
+                    <p>José de Alencar (1865)</p>
+                </div>
+            </a>
+            <a href="http://www.dominiopublico.gov.br/download/texto/ua000192.pdf" target="_blank" class="book-item" data-category="realismo">
+                <img src="img/Memórias Póstumas de Brás Cubas.jpg" alt="Capa do livro Memórias Póstumas de Brás Cubas">
+                <div class="book-info">
+                    <h3>Memórias Póstumas de Brás Cubas</h3>
+                    <p>Machado de Assis (1881)</p>
+                </div>
+            </a>
+            <!-- NOVOS LIVROS ADICIONADOS -->
+            <a href="https://bds.unb.br/bitstream/123456789/955/1/O%20Guarani_%C3%ADntegra.pdf" target="_blank" class="book-item" data-category="aventura">
+                <img src="img/O Guarani - José de Alencar.jpg" alt="Capa do livro O Guarani">
+                <div class="book-info">
+                    <h3>O Guarani</h3>
+                    <p>José de Alencar (1857)</p>
+                </div>
+            </a>
+            <a href="https://www.coletivoleitor.com.br/uploads/demos/a-moreninha-classicos-saraiva.pdf" target="_blank" class="book-item" data-category="romance">
+                <img src="img/A moreninha.jpg" alt="Capa do livro A Moreninha">
+                <div class="book-info">
+                    <h3>A Moreninha</h3>
+                    <p>Joaquim Manuel de Macedo (1844)</p>
+                </div>
+            </a>
+            <a href="https://digital.bbm.usp.br/bitstream/bbm/5000/1/015056_COMPLETO.pdf" target="_blank" class="book-item" data-category="realismo">
+                <img src="img/O Ateneu   Raul Pompéia.jpg" alt="Capa do livro O Ateneu">
+                <div class="book-info">
+                    <h3>O Ateneu</h3>
+                    <p>Raul Pompeia (1888)</p>
+                </div>
+            </a>
+            <a href="https://www.efuturo.com.br/materialbibliotecaonine/3532S-Bernardo.pdf" target="_blank" class="book-item" data-category="modernismo">
+                <img src="img/São bernardo.jpg" alt="Capa do livro São Bernardo">
+                <div class="book-info">
+                    <h3>São Bernardo</h3>
+                    <p>Graciliano Ramos (1934)</p>
+                </div>
+            </a>
+            <a href="https://www.ceaacolegiobrasil.com.br/Biblioteca_virtual/img/divers%C3%A3o_paradidaticos/7%C2%BA_ano/Senhora.pdf" target="_blank" class="book-item" data-category="romance">
+                <img src="img/Senhora - José de Alencar.jpg" alt="Capa do livro Senhora">
+                <div class="book-info">
+                    <h3>Senhora</h3>
+                    <p>José de Alencar (1875)</p>
+                </div>
+            </a>
+            <a href="c:\Users\SENAI\Downloads\quincas.pdf" target="_blank" class="book-item" data-category="realismo">
+                <img src="img/Quincas borda.webp" alt="Capa do livro Quincas Borba">
+                <div class="book-info">
+                    <h3>Quincas Borba</h3>
+                    <p>Machado de Assis (1891)</p>
+                </div>
+            </a>
+            <a href="https://arteref.com/wp-content/uploads/2019/05/O-Quinze-Rachel-de-Queiroz.pdf" target="_blank" class="book-item" data-category="modernismo">
+                <img src="img/O Quinze - Rachel de Queiroz.jpg" alt="Capa do livro O Quinze">
+                <div class="book-info">
+                    <h3>O Quinze</h3>
+                    <p>Rachel de Queiroz (1930)</p>
+                </div>
+            </a>
+            <a href="https://desenredos.com.br/wp-content/uploads/2022/11/14-Artigo-Dheiky-OSertanejo.pdf" target="_blank" class="book-item" data-category="aventura">
+                <img src="img/os sertões.jpg" alt="Capa do livro O Sertanejo">
+                <div class="book-info">
+                    <h3>O Sertanejo</h3>
+                    <p>José de Alencar (1875)</p>
+                </div>
+            </a>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
