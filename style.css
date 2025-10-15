@@ -1,4 +1,3 @@
-/* Estilos Gerais */
 body {
     font-family: 'Nunito Sans', sans-serif;
     margin: 0;
@@ -8,7 +7,6 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-/* Cabeçalho */
 header {
     background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
     color: white;
@@ -20,12 +18,6 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.logo-container {
-    flex: 1;
 }
 
 .logo-link {
@@ -33,41 +25,24 @@ header {
     align-items: center;
     text-decoration: none;
     color: inherit;
-    transition: opacity 0.3s ease;
-}
-
-.logo-link:hover {
-    opacity: 0.85;
 }
 
 .logo {
     height: 50px;
     margin-right: 15px;
-    filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
 }
 
 header h1 {
     margin: 0;
     font-size: 1.8rem;
-    font-weight: 600;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Fonte dos Títulos e Botões */
-h1, h2, h3, .filter-btn {
-    font-family: 'Nunito', sans-serif;
 }
 
 #digital-clock {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     font-family: 'Orbitron', sans-serif;
     font-weight: bold;
     color: #ecf0f1;
     text-shadow: 0 0 5px rgba(173, 216, 230, 0.7);
-}
-
-.header-spacer {
-    flex: 1;
 }
 
 main {
@@ -76,7 +51,6 @@ main {
     padding: 2rem;
 }
 
-/* Pesquisa */
 .controls-container {
     margin-bottom: 2.5rem;
 }
@@ -97,18 +71,13 @@ main {
     box-shadow: 0 0 8px rgba(9, 132, 227, 0.3);
 }
 
-/* ===== FILTROS DE CATEGORIAS ===== */
+/* Botões de filtro */
 #category-filters {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 14px;
     margin-top: 1.8rem;
-    padding: 0.5rem 1rem;
-    background-color: #ffffff;
-    border-radius: 50px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s ease;
 }
 
 .filter-btn {
@@ -119,26 +88,7 @@ main {
     color: #2d3436;
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.95rem;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Efeito hover suave */
-.filter-btn::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(9, 132, 227, 0.15);
-    transition: left 0.4s ease;
-}
-
-.filter-btn:hover::before {
-    left: 0;
 }
 
 .filter-btn:hover {
@@ -146,57 +96,12 @@ main {
     transform: translateY(-3px);
 }
 
-/* Botão ativo */
 .filter-btn.active {
-    background-color: #ffffff;
+    background-color: #0984e3;
     color: white;
-    box-shadow: 0 4px 12px rgb(255, 255, 255);
-    transform: translateY(-2px);
 }
 
-/* Temas por categoria */
-.filter-btn[data-filter="romance"].active {
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgb(255, 255, 255);
-}
-
-.filter-btn[data-filter="realismo"].active {
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgb(255, 255, 255);
-}
-
-.filter-btn[data-filter="modernismo"].active {
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgb(255, 255, 255);
-}
-
-.filter-btn[data-filter="aventura"].active {
-    background-color: #ffffff;
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgb(255, 255, 255);
-}
-
-/* Responsividade dos filtros */
-@media (max-width: 600px) {
-    #category-filters {
-        gap: 10px;
-        padding: 0.5rem;
-    }
-    .filter-btn {
-        padding: 8px 18px;
-        font-size: 0.85rem;
-    }
-}
-
-/* ===== Lista de Livros ===== */
-main h2 {
-    color: #2c3e50;
-    border-bottom: 3px solid #0984e3;
-    padding-bottom: 10px;
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
-}
-
+/* Livros */
 .book-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -228,9 +133,6 @@ main h2 {
 
 .book-info {
     padding: 1rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 .book-info h3 {
@@ -243,16 +145,16 @@ main h2 {
     font-size: 0.9rem;
     color: #666;
     margin: 0;
-    flex-grow: 1;
 }
 
+/* Animação */
 .book-item.hidden {
     opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none; /* Impede cliques durante a animação de saída */
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* ===== Rodapé ===== */
 footer {
     background: #203a43;
     color: rgba(255, 255, 255, 0.8);
@@ -260,30 +162,4 @@ footer {
     padding: 1.5rem 2rem;
     margin-top: 3rem;
     font-size: 0.9rem;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Barra de Rolagem */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #2c5364;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #203a43;
-}
-
-/* Responsividade geral */
-@media (max-width: 600px) {
-    header h1 {
-        display: none;
-    }
 }

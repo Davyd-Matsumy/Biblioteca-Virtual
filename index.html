@@ -18,7 +18,7 @@
             </a>
         </div>
         <div id="digital-clock"></div>
-        <div class="header-spacer"></div> <!-- Espaçador para centralizar o relógio -->
+        <div class="header-spacer"></div>
     </header>
 
     <main>
@@ -26,6 +26,7 @@
             <div class="search-container">
                 <input type="text" id="search-bar" placeholder="Pesquisar por título ou autor...">
             </div>
+
             <div id="category-filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="romance">Romance</button>
@@ -36,8 +37,9 @@
         </div>
 
         <h2>Livros Disponíveis</h2>
+
         <section class="book-list">
-            <!-- Livros adicionados dinamicamente -->
+            <!-- Todos os livros -->
             <a href="https://ddcus.org/pdf/summer_reading/11th_grade/Dom_Casmurro-Machado_de_Assis.pdf" target="_blank" class="book-item" data-category="realismo">
                 <img src="img/Capa Livro - Dom Casmurro.jpg" alt="Capa do livro Dom Casmurro">
                 <div class="book-info">
@@ -88,10 +90,10 @@
                 </div>
             </a>
             <a href="https://leituramelhorviagem.wordpress.com/wp-content/uploads/2016/11/livro-a-ilha-perdida.pdf" target="_blank" class="book-item" data-category="aventura">
-                <img src="img/Os 10 livros mais vendidos de setembro - Estante Virtual Blog _ Livros, cultura e afins.jpg" alt="Capa do livro O Auto da Compadecida">
+                <img src="img/Os 10 livros mais vendidos de setembro - Estante Virtual Blog _ Livros, cultura e afins.jpg" alt="Capa do livro A Ilha Perdida">
                 <div class="book-info">
                     <h3>A Ilha Perdida</h3>
-                    <p>Livro por Maria José Dupré(1944)</p>
+                    <p>Maria José Dupré (1944)</p>
                 </div>
             </a>
             <a href="https://www.ceaacolegiobrasil.com.br/Biblioteca_virtual/img/divers%C3%A3o_paradidaticos/7%C2%BA_ano/Iracema.pdf" target="_blank" class="book-item" data-category="romance">
@@ -101,77 +103,13 @@
                     <p>José de Alencar (1865)</p>
                 </div>
             </a>
-            <a href="http://www.dominiopublico.gov.br/download/texto/ua000192.pdf" target="_blank" class="book-item" data-category="realismo">
-                <img src="img/Memórias Póstumas de Brás Cubas.jpg" alt="Capa do livro Memórias Póstumas de Brás Cubas">
-                <div class="book-info">
-                    <h3>Memórias Póstumas de Brás Cubas</h3>
-                    <p>Machado de Assis (1881)</p>
-                </div>
-            </a>
-            <!-- NOVOS LIVROS ADICIONADOS -->
-            <a href="http://www.dominiopublico.gov.br/download/texto/bv000083.pdf" target="_blank" class="book-item" data-category="aventura">
-                <img src="img/O Guarani - José de Alencar.jpg" alt="Capa do livro O Guarani">
-                <div class="book-info">
-                    <h3>O Guarani</h3>
-                    <p>José de Alencar (1857)</p>
-                </div>
-            </a>
-            <a href="http://www.dominiopublico.gov.br/download/texto/bv000088.pdf" target="_blank" class="book-item" data-category="romance">
-                <img src="img/A moreninha.jpg" alt="Capa do livro A Moreninha">
-                <div class="book-info">
-                    <h3>A Moreninha</h3>
-                    <p>Joaquim Manuel de Macedo (1844)</p>
-                </div>
-            </a>
-            <a href="http://www.dominiopublico.gov.br/download/texto/bv000242.pdf" target="_blank" class="book-item" data-category="realismo">
-                <img src="img/O Ateneu   Raul Pompéia.jpg" alt="Capa do livro O Ateneu">
-                <div class="book-info">
-                    <h3>O Ateneu</h3>
-                    <p>Raul Pompeia (1888)</p>
-                </div>
-            </a>
-            <a href="https://www.efuturo.com.br/materialbibliotecaonine/3532S-Bernardo.pdf" target="_blank" class="book-item" data-category="modernismo">
-                <img src="img/São bernardo.jpg" alt="Capa do livro São Bernardo">
-                <div class="book-info">
-                    <h3>São Bernardo</h3>
-                    <p>Graciliano Ramos (1934)</p>
-                </div>
-            </a>
-            <a href="http://www.dominiopublico.gov.br/download/texto/bv000091.pdf" target="_blank" class="book-item" data-category="romance">
-                <img src="img/Senhora - José de Alencar.jpg" alt="Capa do livro Senhora">
-                <div class="book-info">
-                    <h3>Senhora</h3>
-                    <p>José de Alencar (1875)</p>
-                </div>
-            </a>
-            <a href="http://www.dominiopublico.gov.br/download/texto/bv000194.pdf" target="_blank" class="book-item" data-category="realismo">
-                <img src="img/Quincas borda.webp" alt="Capa do livro Quincas Borba">
-                <div class="book-info">
-                    <h3>Quincas Borba</h3>
-                    <p>Machado de Assis (1891)</p>
-                </div>
-            </a>
-            <a href="https://arteref.com/wp-content/uploads/2019/05/O-Quinze-Rachel-de-Queiroz.pdf" target="_blank" class="book-item" data-category="modernismo">
-                <img src="img/O Quinze - Rachel de Queiroz.jpg" alt="Capa do livro O Quinze">
-                <div class="book-info">
-                    <h3>O Quinze</h3>
-                    <p>Rachel de Queiroz (1930)</p>
-                </div>
-            </a>
-            <a href="http://www.dominiopublico.gov.br/download/texto/bv000275.pdf" target="_blank" class="book-item" data-category="aventura">
-                <img src="img/o sertanejo.jpg" alt="Capa do livro O Sertanejo">
-                <div class="book-info">
-                    <h3>O Sertanejo</h3>
-                    <p>José de Alencar (1875)</p>
-                </div>
-            </a>
-            <!-- Os livros serão gerados aqui pelo script.js -->
         </section>
     </main>
+
     <footer>
-        &copy; 2025 INFINIT BOOCK | Todos os direitos reservados
+        &copy; 2025 INFINIT BOOK | Todos os direitos reservados
     </footer>
-    <script src="books.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
