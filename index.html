@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca Virtual</title>
+    <title>Infinit Book</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&family=Nunito:wght@700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="img/logo.png" alt="Logo da Biblioteca" class="logo">
-            <h1>Biblioteca Virtual</h1>
+            <a href="index.html" class="logo-link">
+                <img src="img/logo.svg" alt="Logo da Biblioteca" class="logo">
+                <h1>Infinit Book</h1>
+            </a>
         </div>
         <div id="digital-clock"></div>
+        <div class="header-spacer"></div> <!-- Espaçador para centralizar o relógio -->
     </header>
 
     <main>
@@ -103,21 +109,21 @@
                 </div>
             </a>
             <!-- NOVOS LIVROS ADICIONADOS -->
-            <a href="https://bds.unb.br/bitstream/123456789/955/1/O%20Guarani_%C3%ADntegra.pdf" target="_blank" class="book-item" data-category="aventura">
+            <a href="http://www.dominiopublico.gov.br/download/texto/bv000083.pdf" target="_blank" class="book-item" data-category="aventura">
                 <img src="img/O Guarani - José de Alencar.jpg" alt="Capa do livro O Guarani">
                 <div class="book-info">
                     <h3>O Guarani</h3>
                     <p>José de Alencar (1857)</p>
                 </div>
             </a>
-            <a href="https://www.coletivoleitor.com.br/uploads/demos/a-moreninha-classicos-saraiva.pdf" target="_blank" class="book-item" data-category="romance">
+            <a href="http://www.dominiopublico.gov.br/download/texto/bv000088.pdf" target="_blank" class="book-item" data-category="romance">
                 <img src="img/A moreninha.jpg" alt="Capa do livro A Moreninha">
                 <div class="book-info">
                     <h3>A Moreninha</h3>
                     <p>Joaquim Manuel de Macedo (1844)</p>
                 </div>
             </a>
-            <a href="https://digital.bbm.usp.br/bitstream/bbm/5000/1/015056_COMPLETO.pdf" target="_blank" class="book-item" data-category="realismo">
+            <a href="http://www.dominiopublico.gov.br/download/texto/bv000242.pdf" target="_blank" class="book-item" data-category="realismo">
                 <img src="img/O Ateneu   Raul Pompéia.jpg" alt="Capa do livro O Ateneu">
                 <div class="book-info">
                     <h3>O Ateneu</h3>
@@ -131,14 +137,14 @@
                     <p>Graciliano Ramos (1934)</p>
                 </div>
             </a>
-            <a href="https://www.ceaacolegiobrasil.com.br/Biblioteca_virtual/img/divers%C3%A3o_paradidaticos/7%C2%BA_ano/Senhora.pdf" target="_blank" class="book-item" data-category="romance">
+            <a href="http://www.dominiopublico.gov.br/download/texto/bv000091.pdf" target="_blank" class="book-item" data-category="romance">
                 <img src="img/Senhora - José de Alencar.jpg" alt="Capa do livro Senhora">
                 <div class="book-info">
                     <h3>Senhora</h3>
                     <p>José de Alencar (1875)</p>
                 </div>
             </a>
-            <a href="c:\Users\SENAI\Downloads\quincas.pdf" target="_blank" class="book-item" data-category="realismo">
+            <a href="http://www.dominiopublico.gov.br/download/texto/bv000194.pdf" target="_blank" class="book-item" data-category="realismo">
                 <img src="img/Quincas borda.webp" alt="Capa do livro Quincas Borba">
                 <div class="book-info">
                     <h3>Quincas Borba</h3>
@@ -152,16 +158,20 @@
                     <p>Rachel de Queiroz (1930)</p>
                 </div>
             </a>
-            <a href="https://desenredos.com.br/wp-content/uploads/2022/11/14-Artigo-Dheiky-OSertanejo.pdf" target="_blank" class="book-item" data-category="aventura">
-                <img src="img/os sertões.jpg" alt="Capa do livro O Sertanejo">
+            <a href="http://www.dominiopublico.gov.br/download/texto/bv000275.pdf" target="_blank" class="book-item" data-category="aventura">
+                <img src="img/o sertanejo.jpg" alt="Capa do livro O Sertanejo">
                 <div class="book-info">
                     <h3>O Sertanejo</h3>
                     <p>José de Alencar (1875)</p>
                 </div>
             </a>
+            <!-- Os livros serão gerados aqui pelo script.js -->
         </section>
     </main>
-
+    <footer>
+        &copy; 2025 INFINIT BOOCK | Todos os direitos reservados
+    </footer>
+    <script src="books.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

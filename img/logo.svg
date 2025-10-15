@@ -1,0 +1,6 @@
+<svg viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><style>.book-cover{fill:#28a745;stroke:#218838;stroke-width:2;}.book-page{fill:#f8f9fa;stroke:#dee2e6;stroke-width:1.5;}</style></defs>
+  <rect class="book-cover" x="40" y="35" width="45" height="60" rx="2"/>
+  <path class="book-page" d="M42 40 v 50 h -5 a 3 3 0 0 1 -3 -3 v -44 a 3 3 0 0 1 3 -3 z"/>
+  <rect class="book-cover" x="10" y="65" width="60" height="25" rx="2"/><rect class="book-page" x="12" y="67" width="56" height="8" rx="1"/>
+</svg>
