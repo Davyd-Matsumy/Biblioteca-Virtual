@@ -117,4 +117,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filtra tudo ao carregar a página
     filterAndSearch();
+
+    // --- Funcionalidade da Barra de Avaliação INTERATIVA ---
+    function generateRatings() {
+        const ratings = document.querySelectorAll('.rating');
+
+        ratings.forEach(rating => {
+            // Limpa o conteúdo anterior
+            rating.innerHTML = '';
+            const initialRating = parseFloat(rating.dataset.rating || 0);
+
+            for (let i = 1; i <= 5; i++) {
+                const star = document.createElement('span');
+                star.classList.add('star');
+                star.innerHTML = '★';
+                star.dataset.value = i;
+
+                if (i <= Math.round(initialRating)) {
+                    star.classList.add('selected');
+                }
+
+                rating.appendChild(star);
+            }
+
+            const stars = rating.querySelectorAll('.star');
+
+            // Evento para quando o mouse sai da área de avaliação
+            rating.addEventListener('mouseleave', () => {
+                const currentRating = Math.round(parseFloat(rating.dataset.rating || 0));
+                stars.forEach((star, index) => {
+                    star.classList.toggle('selected', index < currentRating);
+                });
+            });
+
+            stars.forEach(star => {
+                // Evento para quando o mouse passa por cima de uma estrela
+                star.addEventListener('mouseover', () => {
+                    stars.forEach(s => s.classList.remove('selected')); // Limpa a seleção temporariamente
+                    for (let i = 0; i < star.dataset.value; i++) {
+                        stars[i].classList.add('selected');
+                    }
+                });
+
+                // Evento de clique para definir a avaliação
+                star.addEventListener('click', (e) => {
+                    e.preventDefault(); // Impede a navegação ao clicar na estrela
+                    e.stopPropagation(); // Impede que o evento se propague para o link do livro
+
+                    const newRating = star.dataset.value;
+                    rating.dataset.rating = newRating; // Atualiza o data-attribute com a nova nota
+
+                    console.log(`Livro avaliado com ${newRating} estrelas!`); // Feedback no console
+                });
+            });
+        });
+    }
+
+    generateRatings(); // Executa a função ao carregar a página
 });

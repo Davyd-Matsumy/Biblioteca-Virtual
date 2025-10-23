@@ -564,3 +564,38 @@ html {
 .book-item:nth-child(7) { animation-delay: 0.35s; }
 .book-item:nth-child(8) { animation-delay: 0.4s; }
 .book-item:nth-child(9) { animation-delay: 0.45s; }
+
+/* === Estilos para a Barra de Avaliação Interativa === */
+
+.rating {
+    --star-size: 20px; /* Aumentando um pouco para melhor clique */
+    --star-color: #ccc; /* Cor das estrelas vazias */
+    --star-background: #ffc107; /* Cor das estrelas preenchidas */
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Espaço entre as estrelas */
+    margin-top: 8px;
+}
+
+.rating .star {
+    font-size: var(--star-size);
+    color: var(--star-color);
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    line-height: 1; /* Garante alinhamento vertical */
+}
+
+/* Efeito de hover: acende a estrela e as anteriores a ela */
+.rating:hover .star {
+    color: var(--star-background);
+    transform: scale(1.15);
+}
+
+.rating .star:hover ~ .star {
+    color: var(--star-color);
+    transform: scale(1);
+}
+
+.rating .star.selected {
+    color: var(--star-background);
+}
