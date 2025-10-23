@@ -35,97 +35,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('search-bar');
     const filterButtons = document.querySelectorAll('.filter-btn');    
     const bookList = document.querySelector('.book-list');
-    const paginationControls = document.getElementById('pagination-controls');
-
-    // Estado da Paginação
-    let currentPage = 1;
-    const booksPerPage = 20;
-    let currentFilteredBooks = [...booksData];
 
     // Função para gerar os livros na página
-    function renderBooks(booksToRender, page = 1) {
+    function renderBooks() {
         if (!bookList) return;
         bookList.innerHTML = ''; // Limpa a lista antes de adicionar os livros
 
-        const start = (page - 1) * booksPerPage;
-        const end = start + booksPerPage;
-        const paginatedBooks = booksToRender.slice(start, end);
-
-        paginatedBooks.forEach(book => {
+        booksData.forEach(book => {
             const bookElement = document.createElement('a');
             bookElement.href = book.pdf;
             bookElement.target = '_blank';
             bookElement.className = 'book-item';
             bookElement.dataset.category = book.category;
 
-            // Cria a imagem com um fallback para o caso de não ser encontrada
-            const img = document.createElement('img');
-            img.src = book.image;
-            img.alt = `Capa do livro ${book.title}`;
-            img.onerror = function() {
-                // Se a imagem falhar, usa um placeholder
-                this.onerror = null; // Previne loops infinitos se o placeholder também falhar
-                this.src = 'img/placeholder.svg';
-                this.classList.add('image-placeholder'); // Adiciona classe para estilo opcional
-            };
-
-            const bookInfo = document.createElement('div');
-            bookInfo.className = 'book-info';
-            bookInfo.innerHTML = `
-                <h3>${book.title}</h3>
-                <p>${book.author} (${book.year})</p>
-                <div class="rating" data-rating="${book.rating}">
-                    <!-- Estrelas serão geradas aqui -->
+            bookElement.innerHTML = `
+                <img src="${book.image}" alt="Capa do livro ${book.title}">
+                <div class="book-info">
+                    <h3>${book.title}</h3>
+                    <p>${book.author} (${book.year})</p>
+                    <div class="rating" data-rating="${book.rating}">
+                        <!-- Estrelas serão geradas aqui -->
+                    </div>
                 </div>
             `;
-            bookElement.append(img, bookInfo);
             bookList.appendChild(bookElement);
         });
     }
 
-    // Função para configurar a paginação
-    function setupPagination(totalBooks) {
-        if (!paginationControls) return;
-        paginationControls.innerHTML = '';
-        const pageCount = Math.ceil(totalBooks / booksPerPage);
-
-        if (pageCount <= 1) return; // Não mostra controles se só houver uma página
-
-        const prevButton = document.createElement('button');
-        prevButton.textContent = 'Anterior';
-        prevButton.className = 'pagination-btn';
-        prevButton.disabled = currentPage === 1;
-        prevButton.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                renderBooks(currentFilteredBooks, currentPage);
-                setupPagination(totalBooks);
-                generateRatings(); // Garante que as estrelas da nova página sejam interativas
-            }
-        });
-
-        const pageInfo = document.createElement('span');
-        pageInfo.id = 'page-info';
-        pageInfo.textContent = `Página ${currentPage} de ${pageCount}`;
-
-        const nextButton = document.createElement('button');
-        nextButton.textContent = 'Próximo';
-        nextButton.className = 'pagination-btn';
-        nextButton.disabled = currentPage === pageCount;
-        nextButton.addEventListener('click', () => {
-            if (currentPage < pageCount) {
-                currentPage++;
-                renderBooks(currentFilteredBooks, currentPage);
-                setupPagination(totalBooks);
-                generateRatings(); // Garante que as estrelas da nova página sejam interativas
-            }
-        });
-
-        paginationControls.append(prevButton, pageInfo, nextButton);
-    }
+    renderBooks(); // Gera os livros
 
     // Agora que os livros foram criados, podemos selecioná-los
-    // let bookItems = document.querySelectorAll('.book-item'); // Não é mais necessário aqui
+    let bookItems = document.querySelectorAll('.book-item');
     
     // Função para mostrar livro com animação suave
     function showBook(book) {
@@ -150,21 +90,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const term = searchBar.value.toLowerCase();
         const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
 
-        currentFilteredBooks = booksData.filter(book => {
-            const title = book.title.toLowerCase();
-            const author = book.author.toLowerCase();
-            const category = book.category;
-            
+        document.querySelectorAll('.book-item').forEach(book => {
+            const title = book.querySelector('h3').textContent.toLowerCase();
+            const author = book.querySelector('p').textContent.toLowerCase();
+            const category = book.dataset.category;
+
             const matchesSearch = title.includes(term) || author.includes(term);
             const matchesFilter = activeFilter === 'all' || category === activeFilter;
 
-            return matchesSearch && matchesFilter;
+            if (matchesSearch && matchesFilter) {
+                showBook(book);
+            } else {
+                hideBook(book);
+            }
         });
-
-        currentPage = 1; // Reseta para a primeira página a cada novo filtro/busca
-        renderBooks(currentFilteredBooks, currentPage);
-        setupPagination(currentFilteredBooks.length);
-        generateRatings(); // Re-aplica as estrelas para os livros visíveis
     }
 
     // Debounce para melhor performance
@@ -190,6 +129,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 filterAndSearch();
             }
+        });
+    });
+
+    // Adiciona efeito de hover nos livros
+    bookItems.forEach(book => {
+        book.addEventListener('mouseenter', function() {
+            this.style.zIndex = '10';
+        });
+        
+        book.addEventListener('mouseleave', function() {
+            this.style.zIndex = '';
         });
     });
 
@@ -247,6 +197,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    generateRatings(); // Executa a função ao carregar a página
 
     // Filtra tudo ao carregar a página
     filterAndSearch();

@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPage--;
                 renderBooks(currentFilteredBooks, currentPage);
                 setupPagination(totalBooks);
-                generateRatings(); // Garante que as estrelas da nova página sejam interativas
             }
         });
 
@@ -117,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPage++;
                 renderBooks(currentFilteredBooks, currentPage);
                 setupPagination(totalBooks);
-                generateRatings(); // Garante que as estrelas da nova página sejam interativas
             }
         });
 

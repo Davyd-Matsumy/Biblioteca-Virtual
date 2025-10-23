@@ -43,10 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentFilteredBooks = [...booksData];
 
     // Função para gerar os livros na página
+    function renderBooks() {
     function renderBooks(booksToRender, page = 1) {
         if (!bookList) return;
         bookList.innerHTML = ''; // Limpa a lista antes de adicionar os livros
 
+        booksData.forEach(book => {
         const start = (page - 1) * booksPerPage;
         const end = start + booksPerPage;
         const paginatedBooks = booksToRender.slice(start, end);
@@ -83,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    renderBooks(); // Gera os livros
     // Função para configurar a paginação
     function setupPagination(totalBooks) {
         if (!paginationControls) return;
@@ -100,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPage--;
                 renderBooks(currentFilteredBooks, currentPage);
                 setupPagination(totalBooks);
-                generateRatings(); // Garante que as estrelas da nova página sejam interativas
             }
         });
 
@@ -117,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentPage++;
                 renderBooks(currentFilteredBooks, currentPage);
                 setupPagination(totalBooks);
-                generateRatings(); // Garante que as estrelas da nova página sejam interativas
             }
         });
 
@@ -125,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Agora que os livros foram criados, podemos selecioná-los
+    let bookItems = document.querySelectorAll('.book-item');
     // let bookItems = document.querySelectorAll('.book-item'); // Não é mais necessário aqui
     
     // Função para mostrar livro com animação suave
@@ -150,6 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const term = searchBar.value.toLowerCase();
         const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
 
+        document.querySelectorAll('.book-item').forEach(book => {
+            const title = book.querySelector('h3').textContent.toLowerCase();
+            const author = book.querySelector('p').textContent.toLowerCase();
+            const category = book.dataset.category;
+
         currentFilteredBooks = booksData.filter(book => {
             const title = book.title.toLowerCase();
             const author = book.author.toLowerCase();
@@ -158,6 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const matchesSearch = title.includes(term) || author.includes(term);
             const matchesFilter = activeFilter === 'all' || category === activeFilter;
 
+            if (matchesSearch && matchesFilter) {
+                showBook(book);
+            } else {
+                hideBook(book);
+            }
             return matchesSearch && matchesFilter;
         });
 
@@ -190,6 +202,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 filterAndSearch();
             }
+        });
+    });
+
+    // Adiciona efeito de hover nos livros
+    bookItems.forEach(book => {
+        book.addEventListener('mouseenter', function() {
+            this.style.zIndex = '10';
+        });
+        
+        book.addEventListener('mouseleave', function() {
+            this.style.zIndex = '';
         });
     });
 
@@ -247,6 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    generateRatings(); // Executa a função ao carregar a página
 
     // Filtra tudo ao carregar a página
     filterAndSearch();
