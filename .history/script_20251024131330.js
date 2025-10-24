@@ -21,14 +21,13 @@ let isScrolling;
 window.addEventListener('scroll', () => {
     window.clearTimeout(isScrolling);
     isScrolling = setTimeout(() => {
-        // Executa a lógica de scroll dentro de um requestAnimationFrame para melhor performance
         window.requestAnimationFrame(() => {
             const header = document.querySelector('header');
             if (header) {
                 header.classList.toggle('scrolled', window.pageYOffset > 50);
             }
         });
-    }, 100); // Um pequeno delay para não disparar a cada pixel
+    }, 100);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,19 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Estado da Paginação
     let currentPage = 1;
-    const booksPerPage = 20; // Mantido o valor original
+    const booksPerPage = 20;
     let currentFilteredBooks = [...booksData];
 
     // Função para gerar os livros na página
     function renderBooks(booksToRender, page = 1) {
-        if (!bookList) return;
+        if (!bookList) return; // Proteção caso o elemento não exista
         bookList.innerHTML = ''; // Limpa a lista antes de adicionar os livros
 
         const start = (page - 1) * booksPerPage;
         const end = start + booksPerPage;
         const paginatedBooks = booksToRender.slice(start, end);
 
-        paginatedBooks.forEach((book, index) => {
+        paginatedBooks.forEach(book => {
             const bookElement = document.createElement('a');
             bookElement.href = book.pdf;
             bookElement.target = '_blank';
@@ -63,9 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bookElement.dataset.category = book.category;
 
             // Cria a imagem com um fallback para o caso de não ser encontrada
-            // Adiciona lazy loading para melhorar a performance de carregamento inicial
             const img = document.createElement('img');
-            img.loading = 'lazy'; // Lazy loading nativo do navegador
             img.src = book.image;
             img.alt = `Capa do livro ${book.title}`;
             img.onerror = function() {
@@ -87,18 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
             bookElement.append(img, bookInfo);
             bookList.appendChild(bookElement);
         });
-        // Após renderizar, aplica as avaliações
-        generateRatings();
-        observeBooks(); // Ativa o observador para os novos livros renderizados
     }
 
-    // Função para ATUALIZAR a paginação (mais eficiente)
+    // Função para atualizar os controles de paginação
     function updatePagination(totalBooks) {
         if (!paginationControls || !pageInfo || !prevButton || !nextButton) return;
         
         const totalPages = Math.ceil(totalBooks / booksPerPage);
 
-        // Mostra ou esconde os controles de paginação
         if (totalPages <= 1) {
             paginationControls.style.display = 'none';
             return;
@@ -106,17 +99,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         paginationControls.style.display = 'flex';
         pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
-        // Adiciona uma classe para animar a mudança de texto
-        pageInfo.classList.add('page-info-update');
-        setTimeout(() => {
-            pageInfo.classList.remove('page-info-update');
-        }, 300);
-
         prevButton.disabled = currentPage === 1;
         nextButton.disabled = currentPage === totalPages;
     }
 
-    // Função para mudar de página
     function changePage(direction) {
         const totalPages = Math.ceil(currentFilteredBooks.length / booksPerPage);
         currentPage += direction;
@@ -127,8 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         renderBooks(currentFilteredBooks, currentPage);
         updatePagination(currentFilteredBooks.length);
-        window.scrollTo(0, 0); // Rola para o topo ao mudar de página
+        generateRatings();
+        window.scrollTo(0, 0); // Rola para o topo da página
     }
+
+    // Adiciona eventos aos botões de paginação uma única vez
+    if (prevButton) prevButton.addEventListener('click', () => changePage(-1));
+    if (nextButton) nextButton.addEventListener('click', () => changePage(1));
+
 
     // Função principal de filtro + pesquisa
     function filterAndSearch() {
@@ -149,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPage = 1; // Reseta para a primeira página a cada novo filtro/busca
         renderBooks(currentFilteredBooks, currentPage);
         updatePagination(currentFilteredBooks.length);
+        generateRatings(); // Re-aplica as estrelas para os livros visíveis
     }
 
     // Debounce para melhor performance
@@ -157,10 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(filterAndSearch, 150);
     });
-
-    // Adiciona eventos aos botões de paginação uma única vez
-    if (prevButton) prevButton.addEventListener('click', () => changePage(-1));
-    if (nextButton) nextButton.addEventListener('click', () => changePage(1));
 
     // Troca de filtro com animação
     filterButtons.forEach(btn => {
@@ -230,12 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newRating = star.dataset.value;
                     rating.dataset.rating = newRating; // Atualiza o data-attribute com a nova nota
 
-                    // Adiciona uma animação de "pulso" ao clicar
-                    star.classList.add('star-clicked');
-                    setTimeout(() => {
-                        star.classList.remove('star-clicked');
-                    }, 300);
-
                     console.log(`Livro avaliado com ${newRating} estrelas!`); // Feedback no console
                 });
             });
@@ -244,31 +227,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filtra tudo ao carregar a página
     filterAndSearch();
-
-    // --- Animação de Revelação ao Rolar (Intersection Observer) ---
-    function observeBooks() {
-        const bookItems = document.querySelectorAll('.book-item');
-        const footer = document.querySelector('footer');
-        
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Para de observar após a animação
-                }
-            });
-        }, {
-            rootMargin: '0px',
-            threshold: 0.1 // Anima quando 10% do item estiver visível
-        });
-
-        bookItems.forEach(item => {
-            observer.observe(item);
-        });
-        if (footer) {
-            observer.observe(footer);
-        }
-    }
-
-    observeBooks(); // Executa pela primeira vez no carregamento da página
 });

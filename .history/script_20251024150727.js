@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('search-bar');
     const filterButtons = document.querySelectorAll('.filter-btn');    
     const bookList = document.querySelector('.book-list');
+    const categoryFiltersContainer = document.getElementById('category-filters');
     const paginationControls = document.getElementById('pagination-controls');
     const pageInfo = document.getElementById('page-info');
     const prevButton = document.getElementById('prev-page');
@@ -89,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // Após renderizar, aplica as avaliações
         generateRatings();
-        observeBooks(); // Ativa o observador para os novos livros renderizados
     }
 
     // Função para ATUALIZAR a paginação (mais eficiente)
@@ -106,12 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         paginationControls.style.display = 'flex';
         pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
-        // Adiciona uma classe para animar a mudança de texto
-        pageInfo.classList.add('page-info-update');
-        setTimeout(() => {
-            pageInfo.classList.remove('page-info-update');
-        }, 300);
-
         prevButton.disabled = currentPage === 1;
         nextButton.disabled = currentPage === totalPages;
     }
@@ -135,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const term = searchBar.value.toLowerCase();
         const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
 
+        // Filtra os livros com base no termo de busca e no filtro de categoria ativo
         currentFilteredBooks = booksData.filter(book => {
             const title = book.title.toLowerCase();
             const author = book.author.toLowerCase();
@@ -148,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentPage = 1; // Reseta para a primeira página a cada novo filtro/busca
         renderBooks(currentFilteredBooks, currentPage);
-        updatePagination(currentFilteredBooks.length);
+        updatePagination(currentFilteredBooks.length); // Atualiza a paginação após filtrar
     }
 
     // Debounce para melhor performance
@@ -162,18 +157,55 @@ document.addEventListener('DOMContentLoaded', () => {
     if (prevButton) prevButton.addEventListener('click', () => changePage(-1));
     if (nextButton) nextButton.addEventListener('click', () => changePage(1));
 
-    // Troca de filtro com animação
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const activeBtn = document.querySelector('.filter-btn.active');
-            if (activeBtn !== btn) {
-                activeBtn.classList.remove('active');
-                btn.classList.add('active');
-                
-                // Adiciona feedback visual
-                btn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    btn.style.transform = '';
+    // Função para gerar os botões de filtro dinamicamente
+    function generateFilterButtons() {
+        if (!categoryFiltersContainer) return;
+
+        // Coleta todas as categorias únicas
+        const categories = new Set(booksData.map(book => book.category));
+        const sortedCategories = Array.from(categories).sort();
+
+        // Limpa os botões existentes (se houver)
+        categoryFiltersContainer.innerHTML = '';
+
+        // Adiciona o botão "Todos"
+        const allBtn = document.createElement('button');
+        allBtn.className = 'filter-btn active';
+        allBtn.dataset.filter = 'all';
+        allBtn.textContent = 'Todos';
+        allBtn.setAttribute('aria-label', 'Mostrar todos os livros');
+        allBtn.setAttribute('aria-pressed', 'true');
+        categoryFiltersContainer.appendChild(allBtn);
+
+        // Adiciona os botões para cada categoria
+        sortedCategories.forEach(category => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.dataset.filter = category;
+            btn.textContent = category.charAt(0).toUpperCase() + category.slice(1); // Capitaliza a primeira letra
+            btn.setAttribute('aria-label', `Filtrar por livros de ${category}`);
+            btn.setAttribute('aria-pressed', 'false');
+            categoryFiltersContainer.appendChild(btn);
+        });
+
+        // Adiciona o evento de clique aos novos botões
+        categoryFiltersContainer.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const activeBtn = categoryFiltersContainer.querySelector('.filter-btn.active');
+                if (activeBtn !== btn) {
+                    activeBtn.classList.remove('active');
+                    activeBtn.setAttribute('aria-pressed', 'false');
+                    
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-pressed', 'true');
+                    
+                    // Adiciona feedback visual
+                    btn.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        btn.style.transform = '';
+                    }, 100);
+                    
+                    filterAndSearch();
                 }, 100);
                 
                 filterAndSearch();
@@ -230,13 +262,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newRating = star.dataset.value;
                     rating.dataset.rating = newRating; // Atualiza o data-attribute com a nova nota
 
-                    // Adiciona uma animação de "pulso" ao clicar
-                    star.classList.add('star-clicked');
-                    setTimeout(() => {
-                        star.classList.remove('star-clicked');
-                    }, 300);
+                    // Adicionar feedback visual temporário
+                    const feedbackDiv = document.createElement('div');
+                    feedbackDiv.textContent = `Avaliado com ${newRating} estrelas!`;
+                    feedbackDiv.className = 'rating-feedback'; // Estilizar via CSS
+                    rating.appendChild(feedbackDiv);
 
-                    console.log(`Livro avaliado com ${newRating} estrelas!`); // Feedback no console
+                    // Remover feedback após um tempo
+                    setTimeout(() => {
+                        if (feedbackDiv.parentNode === rating) {
+                            feedbackDiv.remove();
+                        }
+                    }, 1500);
+                    // console.log(`Livro avaliado com ${newRating} estrelas!`); // Feedback no console
                 });
             });
         });
@@ -244,31 +282,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filtra tudo ao carregar a página
     filterAndSearch();
-
-    // --- Animação de Revelação ao Rolar (Intersection Observer) ---
-    function observeBooks() {
-        const bookItems = document.querySelectorAll('.book-item');
-        const footer = document.querySelector('footer');
-        
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Para de observar após a animação
-                }
-            });
-        }, {
-            rootMargin: '0px',
-            threshold: 0.1 // Anima quando 10% do item estiver visível
-        });
-
-        bookItems.forEach(item => {
-            observer.observe(item);
-        });
-        if (footer) {
-            observer.observe(footer);
-        }
-    }
-
-    observeBooks(); // Executa pela primeira vez no carregamento da página
+    generateFilterButtons(); // Gera os botões de filtro ao carregar a página
 });

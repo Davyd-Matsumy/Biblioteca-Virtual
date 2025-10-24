@@ -87,6 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
             bookElement.append(img, bookInfo);
             bookList.appendChild(bookElement);
         });
+
+        // Adiciona um efeito de hover nos livros recém-renderizados
+        bookList.querySelectorAll('.book-item').forEach(item => {
+            item.addEventListener('mouseenter', () => item.classList.add('hovered'));
+            item.addEventListener('mouseleave', () => item.classList.remove('hovered'));
+        });
+
+        // Animação de fade-in para a lista de livros
+        bookList.classList.add('visible');
+
         // Após renderizar, aplica as avaliações
         generateRatings();
         observeBooks(); // Ativa o observador para os novos livros renderizados
@@ -128,12 +138,21 @@ document.addEventListener('DOMContentLoaded', () => {
         renderBooks(currentFilteredBooks, currentPage);
         updatePagination(currentFilteredBooks.length);
         window.scrollTo(0, 0); // Rola para o topo ao mudar de página
+        // Animação de fade-out antes de renderizar a nova página
+        bookList.classList.remove('visible');
+        setTimeout(() => {
+            renderBooks(currentFilteredBooks, currentPage);
+            updatePagination(currentFilteredBooks.length);
+            window.scrollTo(0, 0); // Rola para o topo ao mudar de página
+        }, 200); // Deve corresponder à duração da transição do CSS
     }
 
     // Função principal de filtro + pesquisa
     function filterAndSearch() {
         const term = searchBar.value.toLowerCase();
         const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        // Animação de fade-out antes de filtrar
+        bookList.classList.remove('visible');
 
         currentFilteredBooks = booksData.filter(book => {
             const title = book.title.toLowerCase();
@@ -142,13 +161,30 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const matchesSearch = title.includes(term) || author.includes(term);
             const matchesFilter = activeFilter === 'all' || category === activeFilter;
+        setTimeout(() => {
+            const term = searchBar.value.toLowerCase();
+            const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
 
             return matchesSearch && matchesFilter;
         });
+            currentFilteredBooks = booksData.filter(book => {
+                const title = book.title.toLowerCase();
+                const author = book.author.toLowerCase();
+                const category = book.category;
+                
+                const matchesSearch = title.includes(term) || author.includes(term);
+                const matchesFilter = activeFilter === 'all' || category === activeFilter;
 
         currentPage = 1; // Reseta para a primeira página a cada novo filtro/busca
         renderBooks(currentFilteredBooks, currentPage);
         updatePagination(currentFilteredBooks.length);
+                return matchesSearch && matchesFilter;
+            });
+
+            currentPage = 1; // Reseta para a primeira página a cada novo filtro/busca
+            renderBooks(currentFilteredBooks, currentPage);
+            updatePagination(currentFilteredBooks.length);
+        }, 200); // Deve corresponder à duração da transição do CSS
     }
 
     // Debounce para melhor performance
@@ -237,6 +273,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 300);
 
                     console.log(`Livro avaliado com ${newRating} estrelas!`); // Feedback no console
+                    // Adiciona feedback visual animado
+                    const feedback = document.createElement('div');
+                    feedback.className = 'rating-feedback';
+                    feedback.textContent = 'Avaliado!';
+                    rating.appendChild(feedback);
+
+                    // Remove o feedback após a animação
+                    setTimeout(() => {
+                        feedback.remove();
+                    }, 1500);
                 });
             });
         });

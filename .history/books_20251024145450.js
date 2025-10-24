@@ -807,7 +807,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1919,
         "category": "modernismo",
-        "image": "img/cidades mortas.jpg",
+        "image": "img/cidades mortas.jpgg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000001.pdf",
         "rating": 4.2
     },

@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Infinit Book: Sua biblioteca online de livros clássicos brasileiros e internacionais. Encontre, filtre e avalie seus livros favoritos.">
+    <meta name="keywords" content="livros, biblioteca, online, pdf, clássicos, romance, realismo, modernismo, aventura, literatura brasileira, e-books">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="[SUA_URL_AQUI]"> <!-- Substitua pela URL real do seu site -->
+    <meta property="og:title" content="Infinit Book - Sua Biblioteca Digital">
+    <meta property="og:description" content="Infinit Book: Sua biblioteca online de livros clássicos brasileiros e internacionais. Encontre, filtre e avalie seus livros favoritos.">
+    <meta property="og:image" content="[URL_PARA_IMAGEM_DE_COMPARTILHAMENTO_EX: img/logo.png]"> <!-- Crie uma imagem para compartilhamento -->
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
     <title>Infinit Book</title> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +35,7 @@
     <main>
         <section class="hero-section">
             <h2>Descubra um Universo de Histórias</h2>
-            <p>Explore nossa vasta coleção de clássicos da literatura. Encontre seu próximo livro favorito e mergulhe em novas aventuras.</p>
+            <p>Explore nossa vasta coleção de clássicos da literatura brasileira e mundial. Encontre seu próximo livro favorito, avalie e mergulhe em novas aventuras.</p>
         </section>
         <div class="controls-container">
             <div class="search-container">
@@ -32,13 +44,14 @@
             <div id="category-filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="romance">Romance</button>
-                <button class="filter-btn" data-filter="realismo">Realismo</button>
+                <!-- Estes botões serão gerados dinamicamente pelo JS -->
                 <button class="filter-btn" data-filter="modernismo">Modernismo</button>
                 <button class="filter-btn" data-filter="aventura">Aventura</button>
             </div>
         </div>
 
-        <section class="book-list" id="book-list-container">
+        <h2>Livros Disponíveis</h2>
+        <section class="book-list">
             <!-- Livros adicionados dinamicamente -->
             <!-- Os livros são carregados dinamicamente pelo script.js -->
         </section>

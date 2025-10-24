@@ -248,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Animação de Revelação ao Rolar (Intersection Observer) ---
     function observeBooks() {
         const bookItems = document.querySelectorAll('.book-item');
-        const footer = document.querySelector('footer');
         
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -265,9 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
         bookItems.forEach(item => {
             observer.observe(item);
         });
-        if (footer) {
-            observer.observe(footer);
-        }
     }
 
     observeBooks(); // Executa pela primeira vez no carregamento da página

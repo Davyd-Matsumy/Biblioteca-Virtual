@@ -807,7 +807,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1919,
         "category": "modernismo",
-        "image": "img/cidades mortas.jpg",
+        "image": "img/cidades mortas.jpgg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000001.pdf",
         "rating": 4.2
     },
@@ -978,7 +978,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1943,
         "category": "modernismo",
-        "image": "img/terras sem fim.jpg",
+        "image": "",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Terras%20do%20Sem-Fim.pdf",
         "rating": 4.7
     },

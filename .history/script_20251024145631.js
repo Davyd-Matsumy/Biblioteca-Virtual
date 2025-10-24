@@ -17,8 +17,19 @@ setInterval(updateClock, 1000);
 updateClock();
 
 // Header scroll effect
+let lastScroll = 0;
 let isScrolling;
 window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
     window.clearTimeout(isScrolling);
     isScrolling = setTimeout(() => {
         // Executa a lógica de scroll dentro de um requestAnimationFrame para melhor performance
@@ -43,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Estado da Paginação
     let currentPage = 1;
+    const booksPerPage = 20;
     const booksPerPage = 20; // Mantido o valor original
     let currentFilteredBooks = [...booksData];
 
@@ -55,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const end = start + booksPerPage;
         const paginatedBooks = booksToRender.slice(start, end);
 
+        paginatedBooks.forEach(book => {
         paginatedBooks.forEach((book, index) => {
             const bookElement = document.createElement('a');
             bookElement.href = book.pdf;
@@ -89,15 +102,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // Após renderizar, aplica as avaliações
         generateRatings();
-        observeBooks(); // Ativa o observador para os novos livros renderizados
     }
 
+    // Função para configurar a paginação
+    function setupPagination(totalBooks) {
+        if (!paginationControls) return;
+        paginationControls.innerHTML = '';
+        const pageCount = Math.ceil(totalBooks / booksPerPage);
     // Função para ATUALIZAR a paginação (mais eficiente)
     function updatePagination(totalBooks) {
         if (!paginationControls || !pageInfo || !prevButton || !nextButton) return;
         
         const totalPages = Math.ceil(totalBooks / booksPerPage);
 
+        if (pageCount <= 1) return; // Não mostra controles se só houver uma página
+
+        const prevButton = document.createElement('button');
+        prevButton.textContent = 'Anterior';
+        prevButton.className = 'pagination-btn';
         // Mostra ou esconde os controles de paginação
         if (totalPages <= 1) {
             paginationControls.style.display = 'none';
@@ -106,28 +128,67 @@ document.addEventListener('DOMContentLoaded', () => {
         
         paginationControls.style.display = 'flex';
         pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
-        // Adiciona uma classe para animar a mudança de texto
-        pageInfo.classList.add('page-info-update');
-        setTimeout(() => {
-            pageInfo.classList.remove('page-info-update');
-        }, 300);
-
         prevButton.disabled = currentPage === 1;
+        prevButton.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderBooks(currentFilteredBooks, currentPage);
+                setupPagination(totalBooks);
+                generateRatings(); // Garante que as estrelas da nova página sejam interativas
+            }
+        });
         nextButton.disabled = currentPage === totalPages;
     }
 
+        const pageInfo = document.createElement('span');
+        pageInfo.id = 'page-info';
+        pageInfo.textContent = `Página ${currentPage} de ${pageCount}`;
     // Função para mudar de página
     function changePage(direction) {
         const totalPages = Math.ceil(currentFilteredBooks.length / booksPerPage);
         currentPage += direction;
 
+        const nextButton = document.createElement('button');
+        nextButton.textContent = 'Próximo';
+        nextButton.className = 'pagination-btn';
+        nextButton.disabled = currentPage === pageCount;
+        nextButton.addEventListener('click', () => {
+            if (currentPage < pageCount) {
+                currentPage++;
+                renderBooks(currentFilteredBooks, currentPage);
+                setupPagination(totalBooks);
+                generateRatings(); // Garante que as estrelas da nova página sejam interativas
+            }
+        });
         // Garante que a página atual não saia dos limites
         if (currentPage < 1) currentPage = 1;
         if (currentPage > totalPages) currentPage = totalPages;
 
+        paginationControls.append(prevButton, pageInfo, nextButton);
         renderBooks(currentFilteredBooks, currentPage);
         updatePagination(currentFilteredBooks.length);
         window.scrollTo(0, 0); // Rola para o topo ao mudar de página
+    }
+
+    // Agora que os livros foram criados, podemos selecioná-los
+    // let bookItems = document.querySelectorAll('.book-item'); // Não é mais necessário aqui
+    
+    // Função para mostrar livro com animação suave
+    function showBook(book) {
+        book.style.display = 'flex';
+        requestAnimationFrame(() => {
+            book.classList.remove('hidden');
+        });
+    }
+
+    // Função para esconder livro com animação suave
+    function hideBook(book) {
+        book.classList.add('hidden');
+        setTimeout(() => {
+            if (book.classList.contains('hidden')) {
+                book.style.display = 'none';
+            }
+        }, 300);
     }
 
     // Função principal de filtro + pesquisa
@@ -148,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentPage = 1; // Reseta para a primeira página a cada novo filtro/busca
         renderBooks(currentFilteredBooks, currentPage);
+        setupPagination(currentFilteredBooks.length);
+        generateRatings(); // Re-aplica as estrelas para os livros visíveis
         updatePagination(currentFilteredBooks.length);
     }
 
@@ -230,12 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newRating = star.dataset.value;
                     rating.dataset.rating = newRating; // Atualiza o data-attribute com a nova nota
 
-                    // Adiciona uma animação de "pulso" ao clicar
-                    star.classList.add('star-clicked');
-                    setTimeout(() => {
-                        star.classList.remove('star-clicked');
-                    }, 300);
-
                     console.log(`Livro avaliado com ${newRating} estrelas!`); // Feedback no console
                 });
             });
@@ -244,31 +301,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filtra tudo ao carregar a página
     filterAndSearch();
-
-    // --- Animação de Revelação ao Rolar (Intersection Observer) ---
-    function observeBooks() {
-        const bookItems = document.querySelectorAll('.book-item');
-        const footer = document.querySelector('footer');
-        
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Para de observar após a animação
-                }
-            });
-        }, {
-            rootMargin: '0px',
-            threshold: 0.1 // Anima quando 10% do item estiver visível
-        });
-
-        bookItems.forEach(item => {
-            observer.observe(item);
-        });
-        if (footer) {
-            observer.observe(footer);
-        }
-    }
-
-    observeBooks(); // Executa pela primeira vez no carregamento da página
 });

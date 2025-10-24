@@ -807,7 +807,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1919,
         "category": "modernismo",
-        "image": "img/cidades mortas.jpg",
+        "image": "img/cidades mortas.jpgg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000001.pdf",
         "rating": 4.2
     },
@@ -906,7 +906,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1939,
         "category": "aventura",
-        "image": "img/picapau amarelo.jpg",
+        "image": "img/o-picapau-amarelo.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000012.pdf",
         "rating": 4.8
     },
@@ -915,7 +915,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1942,
         "category": "aventura",
-        "image": "img/-1 a chave do tamanho.jpg",
+        "image": "img/a-chave-do-tamanho.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000013.pdf",
         "rating": 4.5
     },
@@ -924,7 +924,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1944,
         "category": "aventura",
-        "image": "img/os 12 trabalhos de hercule.jpg",
+        "image": "img/os-doze-trabalhos-de-hercules.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000014.pdf",
         "rating": 4.7
     },
@@ -942,7 +942,7 @@ const booksData = [
         "author": "Manuel de Oliveira Paiva",
         "year": 1892,
         "category": "realismo",
-        "image": "img/-2 guidinha.jpg",
+        "image": "img/dona-guidinha-do-poco.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/op000001.pdf",
         "rating": 3.9
     },
@@ -951,7 +951,7 @@ const booksData = [
         "author": "Orígenes Lessa",
         "year": 1938,
         "category": "modernismo",
-        "image": "img/feijão e o sonho.jpg",
+        "image": "img/o-feijao-e-o-sonho.jpg",
         "pdf": "https://www.domleopoldo.com.br/wp-content/uploads/2021/03/O-Feij%C3%A3o-e-o-Sonho-Or%C3%ADgenes-Lessa.pdf",
         "rating": 4.4
     },
@@ -960,7 +960,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1936,
         "category": "modernismo",
-        "image": "img/mar morto.jpg",
+        "image": "img/mar-morto.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Mar%20Morto.pdf",
         "rating": 4.6
     },
@@ -969,7 +969,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1935,
         "category": "modernismo",
-        "image": "img/jubiabá.jpg",
+        "image": "img/jubiaba.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Jubiab%C3%A1.pdf",
         "rating": 4.5
     },
@@ -978,7 +978,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1943,
         "category": "modernismo",
-        "image": "img/terras sem fim.jpg",
+        "image": "img/terras-do-sem-fim.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Terras%20do%20Sem-Fim.pdf",
         "rating": 4.7
     },
@@ -987,7 +987,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1931,
         "category": "modernismo",
-        "image": "img/carnaval.jpg",
+        "image": "img/o-pais-do-carnaval.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/O%20Pa%C3%ADs%20do%20Carnaval.pdf",
         "rating": 4.2
     },
@@ -1008,5 +1008,51 @@ const booksData = [
         "image": "img/suor.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Suor.pdf",
         "rating": 4.1
+    },
+    // Novos Livros Internacionais
+    {
+        "title": "1984",
+        "author": "George Orwell",
+        "year": 1949,
+        "category": "distopia",
+        "image": "img/1984.jpg", // Imagem placeholder, substitua se tiver uma capa real
+        "pdf": "https://example.com/1984.pdf", // Link placeholder, substitua pelo PDF real
+        "rating": 4.8
+    },
+    {
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "year": 1813,
+        "category": "romance",
+        "image": "img/pride-and-prejudice.jpg", // Imagem placeholder, substitua se tiver uma capa real
+        "pdf": "https://example.com/pride-and-prejudice.pdf", // Link placeholder, substitua pelo PDF real
+        "rating": 4.6
+    },
+    {
+        "title": "The Hobbit",
+        "author": "J.R.R. Tolkien",
+        "year": 1937,
+        "category": "aventura",
+        "image": "img/the-hobbit.jpg", // Imagem placeholder, substitua se tiver uma capa real
+        "pdf": "https://example.com/the-hobbit.pdf", // Link placeholder, substitua pelo PDF real
+        "rating": 4.9
+    },
+    {
+        "title": "To Kill a Mockingbird",
+        "author": "Harper Lee",
+        "year": 1960,
+        "category": "drama",
+        "image": "img/to-kill-a-mockingbird.jpg", // Imagem placeholder, substitua se tiver uma capa real
+        "pdf": "https://example.com/to-kill-a-mockingbird.pdf", // Link placeholder, substitua pelo PDF real
+        "rating": 4.7
+    },
+    {
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel García Márquez",
+        "year": 1967,
+        "category": "realismo mágico",
+        "image": "img/one-hundred-years-of-solitude.jpg", // Imagem placeholder, substitua se tiver uma capa real
+        "pdf": "https://example.com/one-hundred-years-of-solitude.pdf", // Link placeholder, substitua pelo PDF real
+        "rating": 4.9
     }
 ]

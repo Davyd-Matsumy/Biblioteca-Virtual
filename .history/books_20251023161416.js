@@ -528,7 +528,7 @@ const booksData = [
         "author": "Gonçalves Dias",
         "year": 1851,
         "category": "romance",
-        "image": "img/juca pirama.jpg",
+        "image": "img/juca-pirama.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/gd000001.pdf",
         "rating": 4.4
     },
@@ -537,7 +537,7 @@ const booksData = [
         "author": "Castro Alves",
         "year": 1870,
         "category": "romance",
-        "image": "img/espumas fluantes.png",
+        "image": "img/espumas-flutuantes.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ca000001.pdf",
         "rating": 4.5
     },
@@ -546,7 +546,7 @@ const booksData = [
         "author": "Castro Alves",
         "year": 1869,
         "category": "romance",
-        "image": "img/o navio negreiro.jpg",
+        "image": "img/o-navio-negreiro.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ca000002.pdf",
         "rating": 4.9
     },
@@ -555,7 +555,7 @@ const booksData = [
         "author": "Álvares de Azevedo",
         "year": 1853,
         "category": "romance",
-        "image": "img/lira lira.jpg",
+        "image": "img/lira-dos-vinte-anos.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/aa000001.pdf",
         "rating": 4.3
     },
@@ -564,7 +564,7 @@ const booksData = [
         "author": "Álvares de Azevedo",
         "year": 1855,
         "category": "romance",
-        "image": "img/noite taverna.jpg",
+        "image": "img/noite-na-taverna.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/aa000002.pdf",
         "rating": 4.6
     },
@@ -573,7 +573,7 @@ const booksData = [
         "author": "Casimiro de Abreu",
         "year": 1859,
         "category": "romance",
-        "image": "img/primaveras.jpg",
+        "image": "img/as-primaveras.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ca000003.pdf",
         "rating": 4.1
     },
@@ -582,7 +582,7 @@ const booksData = [
         "author": "José de Alencar",
         "year": 1857,
         "category": "romance",
-        "image": "img/o guarani.jpg",
+        "image": "img/o-guarani-romance.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/bv000083.pdf",
         "rating": 4.0
     },
@@ -591,7 +591,7 @@ const booksData = [
         "author": "José de Alencar",
         "year": 1856,
         "category": "romance",
-        "image": "img/5 minutos.jpg",
+        "image": "img/cinco-minutos.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ja000001.pdf",
         "rating": 3.8
     },
@@ -609,7 +609,7 @@ const booksData = [
         "author": "José de Alencar",
         "year": 1870,
         "category": "aventura",
-        "image": "img/o guaúcho.jpg",
+        "image": "img/o-gaucho.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ja000003.pdf",
         "rating": 3.9
     },
@@ -618,7 +618,7 @@ const booksData = [
         "author": "José de Alencar",
         "year": 1873,
         "category": "aventura",
-        "image": "img/guerra dos mascates.jpg",
+        "image": "img/a-guerra-dos-mascates.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ja000004.pdf",
         "rating": 4.0
     },
@@ -636,7 +636,7 @@ const booksData = [
         "author": "José de Alencar",
         "year": 1872,
         "category": "romance",
-        "image": "img/sonhos douro.jpg",
+        "image": "img/sonhos-douro.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ja000006.pdf",
         "rating": 4.0
     },
@@ -645,7 +645,7 @@ const booksData = [
         "author": "José de Alencar",
         "year": 1893,
         "category": "romance",
-        "image": "img/eencarnação.jpg",
+        "image": "img/encarnacao.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ja000007.pdf",
         "rating": 3.7
     },
@@ -654,7 +654,7 @@ const booksData = [
         "author": "Bernardo Guimarães",
         "year": 1872,
         "category": "aventura",
-        "image": "img/o garimpeiro.jpg",
+        "image": "img/o-garimpeiro.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/bg000001.pdf",
         "rating": 3.9
     },
@@ -663,7 +663,7 @@ const booksData = [
         "author": "Bernardo Guimarães",
         "year": 1864,
         "category": "romance",
-        "image": "img/ermitão do muquem.jpg",
+        "image": "img/o-ermitao-de-muquem.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/bg000002.pdf",
         "rating": 3.8
     },
@@ -672,7 +672,7 @@ const booksData = [
         "author": "Visconde de Taunay",
         "year": 1874,
         "category": "aventura",
-        "image": "img/laguana.jpg",
+        "image": "img/a-retirada-da-laguna.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/vt000001.pdf",
         "rating": 4.1
     },
@@ -681,7 +681,7 @@ const booksData = [
         "author": "Franklin Távora",
         "year": 1876,
         "category": "aventura",
-        "image": "img/cabeleira.jpg",
+        "image": "img/o-cabeleira.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ft000001.pdf",
         "rating": 4.0
     },
@@ -690,7 +690,7 @@ const booksData = [
         "author": "Inglês de Sousa",
         "year": 1891,
         "category": "realismo",
-        "image": "img/missionario.jpg",
+        "image": "img/o-missionario.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/is000001.pdf",
         "rating": 3.9
     },
@@ -708,7 +708,7 @@ const booksData = [
         "author": "Cruz e Sousa",
         "year": 1893,
         "category": "realismo",
-        "image": "img/a missal.jpg",
+        "image": "img/missal.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/cs000002.pdf",
         "rating": 4.1
     },
@@ -726,7 +726,7 @@ const booksData = [
         "author": "Coelho Neto",
         "year": 1899,
         "category": "realismo",
-        "image": "img/a conquista.jpg",
+        "image": "img/a-conquista.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/cn000001.pdf",
         "rating": 3.8
     },
@@ -735,7 +735,7 @@ const booksData = [
         "author": "Artur Azevedo",
         "year": 1897,
         "category": "realismo",
-        "image": "img/a capital federal.jpg",
+        "image": "img/a-capital-federal.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/aa000003.pdf",
         "rating": 3.9
     },
@@ -744,7 +744,7 @@ const booksData = [
         "author": "Artur Azevedo",
         "year": 1888,
         "category": "realismo",
-        "image": "img/b dote.jpg",
+        "image": "img/o-dote.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/aa000004.pdf",
         "rating": 3.8
     },
@@ -753,7 +753,7 @@ const booksData = [
         "author": "Júlio Ribeiro",
         "year": 1888,
         "category": "realismo",
-        "image": "img/1 carne.jpg",
+        "image": "img/a-carne.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/jr000001.pdf",
         "rating": 4.0
     },
@@ -771,7 +771,7 @@ const booksData = [
         "author": "Lima Barreto",
         "year": 1948,
         "category": "modernismo",
-        "image": "img/clara dos anjos.jpg",
+        "image": "img/clara-dos-anjos.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/lb000001.pdf",
         "rating": 4.5
     },
@@ -780,7 +780,7 @@ const booksData = [
         "author": "Lima Barreto",
         "year": 1915,
         "category": "modernismo",
-        "image": "img/numa e a ninfa.jpg",
+        "image": "img/numa-e-a-ninfa.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/lb000002.pdf",
         "rating": 4.0
     },
@@ -807,7 +807,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1919,
         "category": "modernismo",
-        "image": "img/cidades mortas.jpg",
+        "image": "img/cidades-mortas.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000001.pdf",
         "rating": 4.2
     },
@@ -825,7 +825,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1921,
         "category": "modernismo",
-        "image": "img/a onda verde.jpg",
+        "image": "img/a-onda-verde.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000003.pdf",
         "rating": 4.0
     },
@@ -834,7 +834,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1921,
         "category": "aventura",
-        "image": "img/saci.jpg",
+        "image": "img/o-saci.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000004.pdf",
         "rating": 4.5
     },
@@ -852,7 +852,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1926,
         "category": "modernismo",
-        "image": "img/presindente negro.jpg",
+        "image": "img/o-presidente-negro.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000006.pdf",
         "rating": 4.1
     },
@@ -861,7 +861,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1932,
         "category": "modernismo",
-        "image": "img/0 america.jpg",
+        "image": "img/america.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000007.pdf",
         "rating": 3.9
     },
@@ -870,7 +870,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1933,
         "category": "aventura",
-        "image": "img/caçadas de pedrinho.jpg",
+        "image": "img/cacadas-de-pedrinho.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000008.pdf",
         "rating": 4.7
     },
@@ -879,7 +879,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1931,
         "category": "aventura",
-        "image": "img/reinações de narizinho.jpg",
+        "image": "img/reinacoes-de-narizinho.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000009.pdf",
         "rating": 4.8
     },
@@ -888,7 +888,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1932,
         "category": "aventura",
-        "image": "img/viagem ao ceu.jpg",
+        "image": "img/viagem-ao-ceu.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000010.pdf",
         "rating": 4.6
     },
@@ -897,7 +897,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1936,
         "category": "aventura",
-        "image": "img/memorias da emilia.jpg",
+        "image": "img/memorias-da-emilia.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000011.pdf",
         "rating": 4.7
     },
@@ -906,7 +906,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1939,
         "category": "aventura",
-        "image": "img/picapau amarelo.jpg",
+        "image": "img/o-picapau-amarelo.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000012.pdf",
         "rating": 4.8
     },
@@ -915,7 +915,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1942,
         "category": "aventura",
-        "image": "img/-1 a chave do tamanho.jpg",
+        "image": "img/a-chave-do-tamanho.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000013.pdf",
         "rating": 4.5
     },
@@ -924,7 +924,7 @@ const booksData = [
         "author": "Monteiro Lobato",
         "year": 1944,
         "category": "aventura",
-        "image": "img/os 12 trabalhos de hercule.jpg",
+        "image": "img/os-doze-trabalhos-de-hercules.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/ml000014.pdf",
         "rating": 4.7
     },
@@ -942,7 +942,7 @@ const booksData = [
         "author": "Manuel de Oliveira Paiva",
         "year": 1892,
         "category": "realismo",
-        "image": "img/-2 guidinha.jpg",
+        "image": "img/dona-guidinha-do-poco.jpg",
         "pdf": "http://www.dominiopublico.gov.br/download/texto/op000001.pdf",
         "rating": 3.9
     },
@@ -951,7 +951,7 @@ const booksData = [
         "author": "Orígenes Lessa",
         "year": 1938,
         "category": "modernismo",
-        "image": "img/feijão e o sonho.jpg",
+        "image": "img/o-feijao-e-o-sonho.jpg",
         "pdf": "https://www.domleopoldo.com.br/wp-content/uploads/2021/03/O-Feij%C3%A3o-e-o-Sonho-Or%C3%ADgenes-Lessa.pdf",
         "rating": 4.4
     },
@@ -960,7 +960,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1936,
         "category": "modernismo",
-        "image": "img/mar morto.jpg",
+        "image": "img/mar-morto.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Mar%20Morto.pdf",
         "rating": 4.6
     },
@@ -969,7 +969,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1935,
         "category": "modernismo",
-        "image": "img/jubiabá.jpg",
+        "image": "img/jubiaba.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Jubiab%C3%A1.pdf",
         "rating": 4.5
     },
@@ -978,7 +978,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1943,
         "category": "modernismo",
-        "image": "img/terras sem fim.jpg",
+        "image": "img/terras-do-sem-fim.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/Terras%20do%20Sem-Fim.pdf",
         "rating": 4.7
     },
@@ -987,7 +987,7 @@ const booksData = [
         "author": "Jorge Amado",
         "year": 1931,
         "category": "modernismo",
-        "image": "img/carnaval.jpg",
+        "image": "img/o-pais-do-carnaval.jpg",
         "pdf": "https://www.afoiceeomartelo.com.br/posfsa/Autores/Amado,%20Jorge/O%20Pa%C3%ADs%20do%20Carnaval.pdf",
         "rating": 4.2
     },

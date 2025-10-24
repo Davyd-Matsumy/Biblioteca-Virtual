@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         // Após renderizar, aplica as avaliações
         generateRatings();
-        observeBooks(); // Ativa o observador para os novos livros renderizados
     }
 
     // Função para ATUALIZAR a paginação (mais eficiente)
@@ -106,12 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         paginationControls.style.display = 'flex';
         pageInfo.textContent = `Página ${currentPage} de ${totalPages}`;
-        // Adiciona uma classe para animar a mudança de texto
-        pageInfo.classList.add('page-info-update');
-        setTimeout(() => {
-            pageInfo.classList.remove('page-info-update');
-        }, 300);
-
         prevButton.disabled = currentPage === 1;
         nextButton.disabled = currentPage === totalPages;
     }
@@ -230,12 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newRating = star.dataset.value;
                     rating.dataset.rating = newRating; // Atualiza o data-attribute com a nova nota
 
-                    // Adiciona uma animação de "pulso" ao clicar
-                    star.classList.add('star-clicked');
-                    setTimeout(() => {
-                        star.classList.remove('star-clicked');
-                    }, 300);
-
                     console.log(`Livro avaliado com ${newRating} estrelas!`); // Feedback no console
                 });
             });
@@ -244,31 +231,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filtra tudo ao carregar a página
     filterAndSearch();
-
-    // --- Animação de Revelação ao Rolar (Intersection Observer) ---
-    function observeBooks() {
-        const bookItems = document.querySelectorAll('.book-item');
-        const footer = document.querySelector('footer');
-        
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Para de observar após a animação
-                }
-            });
-        }, {
-            rootMargin: '0px',
-            threshold: 0.1 // Anima quando 10% do item estiver visível
-        });
-
-        bookItems.forEach(item => {
-            observer.observe(item);
-        });
-        if (footer) {
-            observer.observe(footer);
-        }
-    }
-
-    observeBooks(); // Executa pela primeira vez no carregamento da página
 });
